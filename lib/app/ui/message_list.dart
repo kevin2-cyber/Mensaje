@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../data/message.dart';
+import '/data/message_dao.dart';
 
 
 class MessageList extends StatefulWidget {
@@ -17,7 +20,8 @@ class MessageListState extends State<MessageList> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
-    // TODO: Add MessageDao
+    // Add MessageDao
+    final messageDao = Provider.of<MessageDao>(context, listen: false);
 
     // TODO: Add UserDao
 
@@ -47,8 +51,8 @@ class MessageListState extends State<MessageList> {
                       keyboardType: TextInputType.text,
                       controller: _messageController,
                       onSubmitted: (input) {
-                        // TODO: Add Message DAO 1
-                        _sendMessage();
+                        // Add Message DAO 1
+                        _sendMessage(messageDao);
                       },
                       decoration:
                           const InputDecoration(hintText: 'Enter new message'),
@@ -61,7 +65,7 @@ class MessageListState extends State<MessageList> {
                         : CupertinoIcons.arrow_right_circle),
                     onPressed: () {
                       // TODO: Add Message DAO 2
-                      _sendMessage();
+                      _sendMessage(messageDao);
                     })
               ],
             ),
@@ -71,8 +75,20 @@ class MessageListState extends State<MessageList> {
     );
   }
 
-  // TODO: Replace _sendMessage
-  void _sendMessage() {
+  // Replace _sendMessage
+  void _sendMessage(MessageDao messageDao) {
+    if(_canSendMessage()) {
+      final message = Message(
+        text: _messageController.text,
+        date: DateTime.now(),
+        //TODO: add email
+      );
+      messageDao.saveMessage(message);
+      _messageController.clear();
+      setState(() {
+
+      });
+    }
   }
 
   // TODO: Replace _getMessageList
