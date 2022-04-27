@@ -1,3 +1,4 @@
+import 'package:firebase_chat_app/data/user_dao.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,15 +17,20 @@ class MessageList extends StatefulWidget {
 class MessageListState extends State<MessageList> {
   final TextEditingController _messageController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  // TODO: Add Email String
+
+  // Add Email String
+  String? email;
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+
     // Add MessageDao
     final messageDao = Provider.of<MessageDao>(context, listen: false);
 
-    // TODO: Add UserDao
+    // Add UserDao
+    final userDao = Provider.of<UserDao>(context, listen: false);
+    email = userDao.email();
 
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +41,15 @@ class MessageListState extends State<MessageList> {
           'Mensaje',
           style: Theme.of(context).textTheme.headline5,
         )),
-        // TODO: Replace with actions
+        // Replace with actions
+        actions: [
+          IconButton(
+            onPressed: (){
+              userDao.logout();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -83,7 +97,9 @@ class MessageListState extends State<MessageList> {
       final message = Message(
         text: _messageController.text,
         date: DateTime.now(),
-        //TODO: add email
+
+        // add email
+        email: email,
       );
       messageDao.saveMessage(message);
       _messageController.clear();

@@ -1,3 +1,4 @@
+import 'package:firebase_chat_app/data/message_dao.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,10 @@ class App extends StatelessWidget {
           lazy: false,
           create: (_) => UserDao(),
         ),
+        Provider<MessageDao>(
+          lazy: false,
+          create: (_) => MessageDao(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -44,7 +49,7 @@ class App extends StatelessWidget {
             }
           },
         ),
-        // TODO: Add closing parenthesis
+        // Add closing parenthesis
       ),
     );
   }
