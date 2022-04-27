@@ -21,7 +21,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // Add MultiProviderconst
+    // Add MultiProvider
 
     return MultiProvider(
       providers: [
