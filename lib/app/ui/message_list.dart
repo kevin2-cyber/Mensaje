@@ -23,7 +23,12 @@ class MessageListState extends State<MessageList> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RayChat'),
+        elevation: 0,
+        backgroundColor: Colors.transparent.withOpacity(0.09),
+        title: Center(child: Text(
+            'Mensaje',
+          style: Theme.of(context).textTheme.headline5,
+        )),
         // TODO: Replace with actions
       ),
       body: Padding(
