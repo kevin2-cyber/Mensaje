@@ -22,5 +22,11 @@ class Message {
     'text': text,
     'email': email,
   };
-// TODO: Add fromSnapshot
+//  Add fromSnapshot
+  factory Message.fromSnapshot(DocumentSnapshot snapshot) {
+    final message = Message.fromJson(snapshot.data() as
+    Map<String, dynamic>);
+    message.reference = snapshot.reference;
+    return message;
+  }
 }
