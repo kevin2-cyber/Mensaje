@@ -1,11 +1,11 @@
-import 'package:firebase_chat_app/data/user_dao.dart';
+import 'package:firebase_chat_app/data/dao/user_dao.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'message_widget.dart';
+import '../widgets/message_widget.dart';
 import '../../data/message.dart';
-import '/data/message_dao.dart';
+import '../../data/dao/message_dao.dart';
 
 class MessageList extends StatefulWidget {
   const MessageList({Key? key}) : super(key: key);

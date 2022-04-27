@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'message.dart';
+import '../message.dart';
 
 class MessageDao {
   final CollectionReference collection =
