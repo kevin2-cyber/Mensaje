@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../data/dao/user_dao.dart';
+import '../../widgets/app_button.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -26,7 +27,13 @@ class _LoginState extends State<Login> {
     final userDao = Provider.of<UserDao>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mensaje'),
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        elevation: 0,
+        title: Text(
+          'Mensaje',
+          style: Theme.of(context).textTheme.headline5,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(32.0),
@@ -87,16 +94,20 @@ class _LoginState extends State<Login> {
               ),
               const Spacer(),
 
-            // Add Buttons
+              // Add Buttons
               Row(
                 children: [
                   const SizedBox(height: 20),
                   Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        userDao.login(_emailController.text, _passwordController.text);
+                    child: AppButton(
+                      btnText: 'Login',
+                      btnColor: Colors.blueAccent.shade100,
+                      onTap: () {
+                        userDao.login(
+                            _emailController.text,
+                            _passwordController.text
+                        );
                       },
-                      child: const Text('Login'),
                     ),
                   ),
                 ],
@@ -105,11 +116,15 @@ class _LoginState extends State<Login> {
                 children: [
                   const SizedBox(height: 20),
                   Expanded(
-                    child: ElevatedButton(
-                      onPressed: (){
-                        userDao.signup(_emailController.text, _passwordController.text);
+                    child: AppButton(
+                      btnText: 'Sign Up',
+                      btnColor: Colors.blueAccent.shade100,
+                      onTap: () {
+                        userDao.signup(
+                            _emailController.text,
+                            _passwordController.text
+                        );
                       },
-                      child: const Text('Sign Up'),
                     ),
                   ),
                   const SizedBox(height: 60),

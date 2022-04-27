@@ -22,6 +22,7 @@ dependencies:
   cloud_firestore: ^3.1.13
   provider: ^6.0.2
   firebase_auth: ^3.3.15
+  google_fonts: ^2.3.2
 
 dev_dependencies:
   flutter_test:
