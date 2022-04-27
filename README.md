@@ -1,2 +1,2 @@
-# RayChat
+# Mensaje
 A reactive chat app
