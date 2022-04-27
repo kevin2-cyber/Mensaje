@@ -5,6 +5,7 @@ class Message {
   final DateTime date;
   final String? email;
   DocumentReference? reference;
+
   Message({
     required this.text,
     required this.date,
