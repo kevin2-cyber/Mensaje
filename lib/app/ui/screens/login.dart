@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../data/dao/user_dao.dart';
 import '../../widgets/app_button.dart';
@@ -48,9 +49,10 @@ class _LoginState extends State<Login> {
                   const SizedBox(height: 80),
                   Expanded(
                     child: TextFormField(
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
+                      decoration: InputDecoration(
+                        border: const UnderlineInputBorder(),
                         hintText: 'Email Address',
+                        hintStyle: GoogleFonts.montserrat(),
                       ),
                       autofocus: false,
                       keyboardType: TextInputType.emailAddress,
@@ -74,8 +76,11 @@ class _LoginState extends State<Login> {
                   const SizedBox(height: 20),
                   Expanded(
                     child: TextFormField(
-                      decoration: const InputDecoration(
-                          border: UnderlineInputBorder(), hintText: 'Password'),
+                      decoration: InputDecoration(
+                          border: const UnderlineInputBorder(),
+                          hintText: 'Password',
+                        hintStyle: GoogleFonts.montserrat(),
+                      ),
                       autofocus: false,
                       obscureText: true,
                       keyboardType: TextInputType.visiblePassword,

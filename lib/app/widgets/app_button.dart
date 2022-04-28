@@ -16,11 +16,12 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      shape: const StadiumBorder(),
       color: Colors.blue.shade300,
       onPressed: onTap,
       child: Text(
           btnText,
-        style: GoogleFonts.poppins(),
+        style: GoogleFonts.montserrat(),
       ),
     );
   }
